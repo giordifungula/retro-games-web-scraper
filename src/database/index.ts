@@ -7,6 +7,7 @@ interface RetroGames {
     id?: number;
     title: string;
     handle?: string;
+    platform: string;
     plot?: string | null;
     genres?: string[];
     publishers?: string[];
@@ -26,12 +27,14 @@ export const saveGameData = async (game: any) => {
                 title: game.title,
                 plot: game.plot,
                 handle: slugify(game.title),
+                platform: game.platform,
                 genres: game.genres,
                 publishers: game.publishers,
                 releaseDate: game.releaseDate,
                 imageUrl: game.imageUrl,
                 iframeSrc: game.iframeSrc,
-                relatedGames: game.relatedGames
+                relatedGames: game.relatedGames,
+                reference: game.reference
             },
         });
         console.log("Game data saved:", createdGame);

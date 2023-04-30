@@ -9,11 +9,12 @@ interface RetroGames {
   relatedGames?: Array<{
     title: string | null;
     imgSrc: string | null;
+    handle?: string | null;
   }>
 }
 
 export default async function scrapeRetroGamesContent(url: string, platform: string, pageNumber: number, pageLength: number): Promise<RetroGames[]> {
-  console.log("Preparing to scrape...");
+  console.log("Preparing to scrape websites...");
 
   const browser: Browser = await puppeteer.launch({ headless: "new" });
   const page: Page = await browser.newPage();
@@ -95,9 +96,7 @@ async function scrapeIframeSrc(url: string): Promise<{
       const srcMatch = text.match(/src="([^"]+)"/);
       return srcMatch ? srcMatch[1] : null;
     });
-  } catch (error: any) {
-    console.error(`Error while finding textarea element: ${error.message}`);
-  }
+  } catch (error: any) {}
 
   await browser.close();
 
