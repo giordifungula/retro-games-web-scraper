@@ -14,7 +14,7 @@ interface RetroGames {
 }
 
 export default async function scrapeRetroGamesContent(url: string, platform: string, pageNumber: number, pageLength: number): Promise<RetroGames[]> {
-  console.log("Preparing to scrape websites...");
+  console.log("Preparing to scrape the websites ⛏...");
 
   const browser: Browser = await puppeteer.launch({ headless: "new" });
   const page: Page = await browser.newPage();
@@ -33,7 +33,7 @@ export default async function scrapeRetroGamesContent(url: string, platform: str
   );
   // PROGRESS BAR: Configuration //////////////////////
   const progressBar = new cliProgress.SingleBar({
-    format: `Retrieving pg. ${pageNumber} out of ${pageLength}: ` + colours.cyan('{bar}') + '| {percentage}%',
+    format: `\nRetrieving pg. ${pageNumber} out of ${pageLength}: ` + colours.cyan('{bar}') + '| {percentage}% || {value}/{total}',
     barCompleteChar: '\u2588',
     barIncompleteChar: '\u2591',
     hideCursor: true

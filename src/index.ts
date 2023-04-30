@@ -54,7 +54,7 @@ app.post('/scrape-retro-games', async (req, res) => {
       const list = await scrapeRetroGamesContent(url, platform, i, pageCount-1);
       
       const progressBar = new cliProgress.SingleBar({
-        format: 'Saving the games to the database: ' + colours.cyan('{bar}') + '| {percentage}%',
+        format: '\nSaving the games to the database: ' + colours.cyan('{bar}') + '| {percentage}%',
         barCompleteChar: '\u2588',
         barIncompleteChar: '\u2591',
         hideCursor: true
