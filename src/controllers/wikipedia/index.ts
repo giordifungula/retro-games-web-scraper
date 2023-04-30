@@ -93,7 +93,6 @@ export default async function scrapeWikipediaContent(gameTitle: string): Promise
         imageUrl,
       };
     } catch (error) {
-      console.error('Error scraping Wikipedia plot:', error);
       await browser.close();
       return null;
     }

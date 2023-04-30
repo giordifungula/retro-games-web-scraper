@@ -37,17 +37,17 @@ export default async function scrapeRetroGamesContent(url: string, platform: str
     barIncompleteChar: '\u2591',
     hideCursor: true
   }, cliProgress.Presets.shades_classic);
-
-  progressBar.start(games.length, 0);
+  
+  const listLength = games.length === 50 ? games.length * 2 : games.length
+  progressBar.start(listLength, 0);
 
   for (let i = 0; i < games.length; i++) {
-    // Scrape game iFrame URL and related game title and  
+    // Scrape game iFrame URL and related game titles and image sources 
     const singleGame = await scrapeIframeSrc(games[i].url);
     games[i].iframeSrc = singleGame.iframeSrc;
     games[i].relatedGames = singleGame.relatedGames;
 
-    progressBar.update(1);
-    console.log('\n', games[i].title);
+    progressBar.update(listLength === 50 ? 1 : (i / games.length) * 100);
   }
   progressBar.stop();
 

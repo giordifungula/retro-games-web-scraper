@@ -28,12 +28,13 @@ app.post('/scrape-retro-games', async (req, res) => {
         barIncompleteChar: '\u2591',
         hideCursor: true
       }, cliProgress.Presets.shades_classic);
-      bar.start(list.length, 0);
+      const listLength = list.length === 50 ? list.length * 2 : list.length
+      bar.start(listLength, 0);
       for (let i = 0; i < list.length; i++) {
         const game = list[i];
         const details = await scrapeWikipediaContent(game.title);
         games.push({ ...game, ...details });
-        bar.update((i / list.length) * 100);
+        bar.update(listLength === 50 ? 1 : (i / list.length) * 100);
       }
     }
     res.json({games});
