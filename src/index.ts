@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { platformSelector } from '../src/helper';
+import { platformSelector } from './helper';
 
 const app = express();
 app.use(bodyParser.json());
