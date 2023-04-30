@@ -40,7 +40,7 @@ export default async function scrapeRetroGamesContent(url: string, platform: str
   }, cliProgress.Presets.shades_classic);
   
   const listLength = games.length === 50 ? games.length * 2 : games.length
-  progressBar.start(listLength, 2);
+  progressBar.start(listLength, 0);
 
   for (let i = 0; i < games.length; i++) {
     // Scrape game iFrame URL and related game titles and image sources 
