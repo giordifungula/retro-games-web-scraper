@@ -59,7 +59,7 @@ app.post('/scrape-retro-games', async (req, res) => {
         hideCursor: true
       }, cliProgress.Presets.shades_classic);
       const listLength = list.length === 50 ? list.length * 2 : list.length
-      bar.start(listLength, 0);
+      bar.start(listLength, 2);
       for (let i = 0; i < list.length; i++) {
         const game = list[i];
         const details = await scrapeWikipediaContent(game.title);

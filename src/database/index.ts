@@ -21,8 +21,7 @@ interface RetroGames {
 export const saveGameData = async (game: any) => {
     try {
         await prisma.$connect();
-
-        const createdGame = await prisma.game.create({
+        await prisma.game.create({
             data: {
                 title: game.title,
                 plot: game.plot,
@@ -37,7 +36,6 @@ export const saveGameData = async (game: any) => {
                 reference: game.reference
             },
         });
-        console.log("Game data saved:", createdGame);
     } catch (error) {
         console.error("Error saving game data:", error);
     }

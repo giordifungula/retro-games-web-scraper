@@ -13,8 +13,8 @@ model Game {
   handle      String
   platform    String
   plot        String?
-  genres      Json
-  publishers  Json
+  genres      Json?
+  publishers  Json?
   releaseDate String?
   imageUrl    String?
   reference   String?
