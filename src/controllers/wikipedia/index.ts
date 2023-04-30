@@ -1,5 +1,4 @@
 import puppeteer, { Browser, Page } from 'puppeteer';
-import moment from 'moment';
 const googleIt = require('google-it');
 
 interface GamePlot {
@@ -92,7 +91,7 @@ export default async function scrapeWikipediaContent(gameTitle: string): Promise
         plot,
         genres,
         publishers,
-        releaseDate: moment(releaseDate).format('LL'),
+        releaseDate,
         imageUrl,
         reference
       };
