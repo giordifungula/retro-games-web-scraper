@@ -52,14 +52,16 @@ app.post('/scrape-retro-games', async (req, res) => {
     for (let i = 1; i < pageCount; i++) {
       const url = `https://www.retrogames.cc/${platform}/page/${i}.html`;
       const list = await scrapeRetroGamesContent(url, platform, i, pageCount-1);
+      
       const progressBar = new cliProgress.SingleBar({
-        format: `Saving to the database: ` + colours.cyan('{bar}') + '| {percentage}% || {value}/{total}',
+        format: 'Saving the games to the database: ' + colours.cyan('{bar}') + '| {percentage}%',
         barCompleteChar: '\u2588',
         barIncompleteChar: '\u2591',
         hideCursor: true
       }, cliProgress.Presets.shades_classic);
       const listLength = list.length === 50 ? list.length * 2 : list.length
       progressBar.start(listLength, 0);
+      
       for (let i = 0; i < list.length; i++) {
         const game = list[i];
         const details = await scrapeWikipediaContent(game.title);

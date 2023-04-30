@@ -33,7 +33,7 @@ export default async function scrapeRetroGamesContent(url: string, platform: str
   );
   // PROGRESS BAR: Configuration //////////////////////
   const progressBar = new cliProgress.SingleBar({
-    format: `Retrieving pg. ${pageNumber} out of ${pageLength}: ` + colours.cyan('{bar}') + '| {percentage}% || {value}/{total}',
+    format: `Retrieving pg. ${pageNumber} out of ${pageLength}: ` + colours.cyan('{bar}') + '| {percentage}%',
     barCompleteChar: '\u2588',
     barIncompleteChar: '\u2591',
     hideCursor: true
