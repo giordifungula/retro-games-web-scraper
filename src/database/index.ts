@@ -21,7 +21,7 @@ interface RetroGames {
 export const saveGameData = async (game: any) => {
     try {
         await prisma.$connect();
-        await prisma.game.create({
+        await prisma.games.create({
             data: {
                 title: game.title,
                 plot: game.plot,

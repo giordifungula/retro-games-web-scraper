@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Game {
+model Games {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   handle      String
