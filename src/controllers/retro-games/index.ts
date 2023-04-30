@@ -8,7 +8,7 @@ interface RetroGames {
   iframeSrc?: string | null;
   relatedGames?: Array<{
     title: string | null;
-    imgSrc: string | null
+    imgSrc: string | null;
   }>
 }
 
@@ -75,12 +75,12 @@ async function scrapeIframeSrc(url: string): Promise<{
         const imgSrc = item.querySelector('.post-thumb img')?.getAttribute('src') || '';
         return {
           title,
-          imgSrc,
+          imgSrc
         };
       } else {
         return {
           title: null,
-          imgSrc: null,
+          imgSrc: null
         };
       }
     });

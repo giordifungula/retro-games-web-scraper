@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import cliProgress from 'cli-progress';
 import colours from 'ansi-colors';
 import { platformSelector } from './helper';
+import { saveGameData } from './database';
 
 const app = express();
 app.use(bodyParser.json());
@@ -33,6 +34,7 @@ app.post('/scrape-retro-games', async (req, res) => {
       for (let i = 0; i < list.length; i++) {
         const game = list[i];
         const details = await scrapeWikipediaContent(game.title);
+        await saveGameData({ ...game, ...details });
         games.push({ ...game, ...details });
         bar.update(listLength === 50 ? 1 : (i / list.length) * 100);
       }

@@ -7,6 +7,7 @@ interface GamePlot {
     publishers: string[];
     releaseDate: string;
     imageUrl: string | null;
+    reference: string | null;
 }
 
 export default async function scrapeWikipediaContent(gameTitle: string): Promise<GamePlot | null>  {
@@ -82,7 +83,8 @@ export default async function scrapeWikipediaContent(gameTitle: string): Promise
         (imgElement: HTMLImageElement) => imgElement.src,
         null
       ).catch(() => null);
-  
+      
+      const reference = url;
       await browser.close();
       
       return { 
@@ -91,6 +93,7 @@ export default async function scrapeWikipediaContent(gameTitle: string): Promise
         publishers,
         releaseDate,
         imageUrl,
+        reference
       };
     } catch (error) {
       await browser.close();
