@@ -14,7 +14,7 @@ interface RetroGames {
 }
 
 export default async function scrapeRetroGamesContent(url: string, platform: string, pageNumber: number, pageLength: number): Promise<RetroGames[]> {
-  console.log("Preparing to scrape the websites ⛏...");
+  console.log("Preparing to scrape from various websites ⛏...");
 
   const browser: Browser = await puppeteer.launch({ headless: "new" });
   const page: Page = await browser.newPage();

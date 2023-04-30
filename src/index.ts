@@ -42,12 +42,12 @@ app.post('/database/connection', async (req, res) => {
   }
 })
 
-app.post('/scrape-retro-games', async (req, res) => {
+app.post('/scrape-and-save', async (req, res) => {
   let { pageCount, platform } = req.body;
+  const platformName: string = platform;
   try {
     let games = [];
     pageCount = pageCount + 1;
-    const platformName: string = platform;
     platform = platformSelector(platform);
     for (let i = 1; i < pageCount; i++) {
       const url = `https://www.retrogames.cc/${platform}/page/${i}.html`;
@@ -73,7 +73,7 @@ app.post('/scrape-retro-games', async (req, res) => {
     res.json({games});
   } catch (error) {
     console.error(`Error scraping ${platform} games:`, error);
-    res.status(500).json({ error: 'Failed to scrape PSX games' });
+    res.status(500).json({ error: `Failed to scrape ${platformName} games` });
   }
 }); 
 
