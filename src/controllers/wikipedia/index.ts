@@ -24,7 +24,7 @@ export default async function scrapeWikipediaContent(gameTitle: string): Promise
       }
   
       const url = searchResults[0].link;
-      await page.goto(url, { waitUntil: 'networkidle2' });
+      await page.goto(url, { waitUntil: 'networkidle2', timeout: 0 });
   
       const plotHeader = await page.$x("//h2/span[contains(., 'Plot')]");
       let plot: string | null = null;
