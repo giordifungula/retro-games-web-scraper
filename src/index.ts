@@ -22,8 +22,8 @@ app.post('/scrape-retro-games', async (req, res) => {
       const list = await scrapeRetroGamesContent(url, platform);
       for (let i = 0; i < list.length; i++) {
         const game = list[i];
-        const plot = await scrapeWikipediaContent(game.title);
-        games.push({ ...game, ...plot });
+        const details = await scrapeWikipediaContent(game.title);
+        games.push({ ...game, ...details });
         console.log(games);
       }
     }

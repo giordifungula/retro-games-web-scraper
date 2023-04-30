@@ -54,5 +54,3 @@ export const platformSelector = (platform: string) => {
             break;
     }
 };
-
-

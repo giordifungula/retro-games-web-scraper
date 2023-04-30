@@ -30,6 +30,7 @@ export default async function scrapeRetroGamesContent(url: string, platform: str
         games[i].relatedGames = singleGame.relatedGames;
         console.log(games[i]);
     }
+    
     await browser.close();
     return games;
 }
@@ -58,7 +59,6 @@ async function scrapeIframeSrc(url: string): Promise<{
       return srcMatch ? srcMatch[1] : '';
     });
   
-    await page.close();
     await browser.close();
     return {
         iframeSrc, 
