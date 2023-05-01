@@ -1,5 +1,5 @@
 export const platformSelector = (platform: string) => {
-    switch (platform) {
+    switch (platform.toLowerCase()) {
         case "nes":
             return "nes-games";
         case "snes":

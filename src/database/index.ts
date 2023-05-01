@@ -36,7 +36,9 @@ export const saveGameData = async (game: any) => {
                 reference: game.reference
             },
         });
-    } catch (error) {}
+    } catch (error) {
+        return null;
+    }
     finally {
         await prisma.$disconnect();
     }
