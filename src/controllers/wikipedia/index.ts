@@ -10,12 +10,12 @@ interface GamePlot {
     reference: string | null;
 }
 
-export default async function scrapeWikipediaContent(gameTitle: string): Promise<GamePlot | null>  {
+export default async function scrapeWikipediaContent(gameTitle: string, platform: string): Promise<GamePlot | null>  {
     const browser: Browser = await puppeteer.launch({ headless: "new" });
     const page: Page = await browser.newPage();
     try {
       const searchResults = await googleIt({
-        query: `${gameTitle} PlayStation game site:en.wikipedia.org`,
+        query: `${gameTitle} ${platform} game site:en.wikipedia.org`,
         disableConsole: true,
       });
   

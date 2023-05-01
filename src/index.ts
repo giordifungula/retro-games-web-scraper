@@ -64,7 +64,7 @@ app.post('/scrape-and-save', async (req, res) => {
       
       for (let i = 0; i < list.length; i++) {
         const game = list[i];
-        const details = await scrapeWikipediaContent(game.title);
+        const details = await scrapeWikipediaContent(game.title, platformName);
         await saveGameData({ ...game, ...details, platform: platformName });
         games.push({ ...game, ...details });
         progressBar.update(listLength === 50 ? 1 : (i / list.length) * 100);
